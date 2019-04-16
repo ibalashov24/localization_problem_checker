@@ -12,7 +12,7 @@ before_script:
   - echo "Downloading and setting up a docker image..."
   - docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
   - docker volume create $VOLUME_NAME
-  - volume_path=$(docker volume inspect $volume_name --format '{{.Mountpoint}}')
+  - volume_path=$(docker volume inspect $VOLUME_NAME --format '{{.Mountpoint}}')
   
   - echo "Downloading checker rig..."
   - svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/mapGenerator/MapGenerator $volume_path/MapGenerator
