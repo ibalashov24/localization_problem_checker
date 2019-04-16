@@ -6,8 +6,7 @@ services:
   - docker
   
 env:
-  - VOLUME_NAME="trik-checker-sandbox"
-  - CONTAINER_NAME="trik-checker"
+  - VOLUME_NAME="trik-checker-sandbox"  CONTAINER_NAME="trik-checker"
   
 before_script:
   - echo "Downloading and setting up a docker image..."
