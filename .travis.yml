@@ -10,23 +10,23 @@ env:
   
 before_script:
   - echo "Downloading and setting up a docker image..."
-  - docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
-  - docker volume create $VOLUME_NAME
-  - volume_path=$(docker volume inspect $VOLUME_NAME --format '{{.Mountpoint}}')
+  - sudo docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
+  - sudo docker volume create $VOLUME_NAME
+  - volume_path=$(sudo docker volume inspect $VOLUME_NAME --format '{{.Mountpoint}}')
   
   - echo "Downloading checker rig..."
-  - svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/mapGenerator/MapGenerator $volume_path/MapGenerator
-  - svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/travis-integration/TestScripts $volume_path/TestScripts
-  - cp -a "$volume_path/MapGenerator/." "$volume_path"
-  - cp -a "$volume_path/TestScripts/." "$volume_path"
+  - sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/mapGenerator/MapGenerator $volume_path/MapGenerator
+  - sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/travis-integration/TestScripts $volume_path/TestScripts
+  - sudo cp -a "$volume_path/MapGenerator/." "$volume_path"
+  - sudo cp -a "$volume_path/TestScripts/." "$volume_path"
   
   - echo "Preparing user solution file..."
-  - cp ./solution.js $volume_path/solution.js  
+  - sudo cp ./solution.js $volume_path/solution.js  
   
 script:
   - echo "Launching Docker container"
   - >
-    docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts checker:latest 
+    sudo docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts checker:latest 
     "bash /trikStudio-checker/launch_scripts/start_testing.sh"
     
 after_success:
