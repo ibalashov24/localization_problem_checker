@@ -25,10 +25,10 @@ before_script:
   
 script:
   - echo "Launching Docker container"
-  - sudo docker ps -a
+  - sudo docker images
   - >
     sudo docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts checker
-    "bash /trikStudio-checker/launch_scripts/start_testing.sh"
+    bash /trikStudio-checker/launch_scripts/start_testing.sh
     
 after_success:
   - echo "TEST SUCCESS"
