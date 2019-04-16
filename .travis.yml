@@ -10,7 +10,7 @@ env:
   
 before_script:
   - echo "Downloading and setting up a docker image..."
-  - sudo docker build https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial --label checker
+  - sudo docker build -t checker https://github.com/anastasiia-kornilova/epicbox-images.git#xenial:/epicbox-trik -f Dockerfile.xenial
   - sudo docker volume create $VOLUME_NAME
   - volume_path=$(sudo docker volume inspect $VOLUME_NAME --format '{{.Mountpoint}}')
   
@@ -25,8 +25,9 @@ before_script:
   
 script:
   - echo "Launching Docker container"
+  - sudo docker ps -a
   - >
-    sudo docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts checker:latest 
+    sudo docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts checker
     "bash /trikStudio-checker/launch_scripts/start_testing.sh"
     
 after_success:
