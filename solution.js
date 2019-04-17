@@ -8,31 +8,31 @@ var base_delay = 20; // ms
 
 // Map parameters
 var cell_side = 400.0; // mm
-var cell_count = 8;
-var side_half_corridor_width = 33; // in infrared sensor points; might be rewritten!
-var forward_half_corridor_width = 33; // in sonic sensor points; might be rewritten!
-
+var cell_count = 8;
+var side_half_corridor_width = 33; // in infrared sensor points; might be rewritten!
+var forward_half_corridor_width = 33; // in sonic sensor points; might be rewritten!
+
 // Map
-var input_map =
-		[
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-			[1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-			[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-			[1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-			[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-			[1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-			[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-			[1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-			[1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
-			[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-			[1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-			[1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-		] // Map for Task_1_[0..29]
+var input_map =
+		[
+			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
+			[1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+			[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+			[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
+			[1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+			[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
+			[1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
+			[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+			[1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+			[1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+			[1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		] // Map for Task_1_[0..29]
 		
 // Helpful aliases
 var left_motor = M1;
@@ -41,26 +41,26 @@ var left_encoder = E1;
 var right_encoder = E2;
 var left_IR_sensor = A1;
 var right_IR_sensor = A2;
-var forward_sonic_sensor = D1;
-
-// Structures 
-const Direction = {
-		LEFT : 1,
-		RIGHT : 2,
-		FORWARD : 3,
-		BACKWARD : 4 };
-		
-const Cell_type = {
-		EMPTY : 0,
-		WALL : 1,
-		UNKNOWN : -1 };
+var forward_sonic_sensor = D1;
+
+// Structures 
+const Direction = {
+		LEFT : 1,
+		RIGHT : 2,
+		FORWARD : 3,
+		BACKWARD : 4 };
+		
+const Cell_type = {
+		EMPTY : 0,
+		WALL : 1,
+		UNKNOWN : -1 };
 		
 
-/***** Code *****/
-
-
+/***** Code *****/
+
+
 /***** Movement *****/
-
+
 
 // Returns yaw relative to calibration position
 var get_current_angle = function()
@@ -166,7 +166,7 @@ var move_forward = function(start_angle)
 	
 	print("Moving forward: " + path_to_go + " signals; direction: " + start_angle);
 	
-	while (brick.sensor(forward_sonic_sensor).read() > forward_half_corridor_width 
+	while (brick.sensor(forward_sonic_sensor).read() > forward_half_corridor_width 
 			&& (encoder_left + encoder_right) / 2 < path_to_go)
 	{
 		var deflection_coefficient = calc_deflection(start_angle);
@@ -220,9 +220,9 @@ var make_turn_in_place = function(angle, start_angle)
 	print("Turn: start " + start_angle + "; target " + target + "; fact " + get_current_angle());
 	
 	var current_angle = get_current_angle();
-	var last_angle = current_angle;
-	
-	// We are translating [-180..180] angle scale to [-inf..inf] scale
+	var last_angle = current_angle;
+	
+	// We are translating [-180..180] angle scale to [-inf..inf] scale
 	// in order to avoid 180/-180 problem
 	var converting_factor = 0;
 	while (k * current_angle < k * target)
@@ -249,17 +249,17 @@ var make_turn_in_place = function(angle, start_angle)
 	
 	return angle;
 }
-
-
-/***** Localization *****/
-
+
+
+/***** Localization *****/
+
 // Reads map from some input (DUMMY)
 var read_map = function()
 {
 	return input_map;
 }
-
-// Recalculates current position after forward 
+
+// Recalculates current position after forward 
 // move in the position.angle direction
 var reflect_forward_movement = function(position)
 {
@@ -273,7 +273,7 @@ var reflect_forward_movement = function(position)
 	
 	return { x : forward_cell.x, y : forward_cell.y, angle : position.angle };
 }
-
+
 // Calculates absolute cell coordinates from relative ones
 var get_current_cell_coordinate = function(origin, relative_position)
 {
@@ -290,7 +290,7 @@ var get_current_cell_coordinate = function(origin, relative_position)
 			break;
 		case -90:
 			result.x += relative_position.y;
-			result.y -= relative_position.x;
+			result.y -= relative_position.x;
 			break;
 		case 180:
 		case -180:
@@ -301,7 +301,7 @@ var get_current_cell_coordinate = function(origin, relative_position)
 	
 	return result;
 }
-
+
 // Calculates the coordinates of the cell in front of the robot
 var get_forward_cell_coordinate = function(origin, relative_position)
 {
@@ -328,7 +328,7 @@ var get_forward_cell_coordinate = function(origin, relative_position)
 	
 	return get_current_cell_coordinate(origin, new_relative_position);	
 }
-
+
 // Calculates the coordinates of the cell to the left of the robot.
 var get_left_cell_coordinate = function(hypothesis, relative_position)
 {
@@ -340,7 +340,7 @@ var get_left_cell_coordinate = function(hypothesis, relative_position)
 		});
 	return { x : result.x, y : result.y, angle : relative_position.angle };
 }
-
+
 // Calculates the coordinates of the cell to the right of the robot.
 var get_right_cell_coordinate = function(hypothesis, relative_position)
 {
@@ -352,21 +352,21 @@ var get_right_cell_coordinate = function(hypothesis, relative_position)
 		});
 	return { x : result.x, y : result.y, angle : recalculate_angle(result.angle - 90) };
 }
-
+
 // Checks if given coordinates belong to the map
 var is_in_bounds = function(map, coordinates)
 {
 	return (coordinates.x >= 0 && coordinates.x < map[0].length &&
 			coordinates.y >= 0 && coordinates.y < map.length);
 }
-
+
 // Cuts off wrong hyposheses about start cell location
 var filter_hypotheses = function(map, hypotheses, position)
 {
 	var is_left_empty = !is_left_occupied();
 	var is_right_empty = !is_right_occupied();
 	var is_forward_empty = !is_straight_occupied();
-	
+	
 	print("Relative coords: " + position.x + " " + position.y + " " + position.angle);
 	
 	var filtered = [];
@@ -394,10 +394,10 @@ var filter_hypotheses = function(map, hypotheses, position)
 	
 	return filtered;
 }
-
+
 // Returns initial set of hypotheses about start cell location
 var init_hypotheses = function(map)
-{
+{
 	// We hypothesize only cells that a robot can visit
 	var result = [];
 	for (var i = 1; i < map.length - 1; i += 2)
@@ -415,108 +415,108 @@ var init_hypotheses = function(map)
 	}
 	
 	return result;
-}
-
-// Returns the position of the first occurrence
-// sample_cells in robot_path from the end of the array
-var get_nearest_cycle_distance = function(robot_path, sample_cells)
-{
-	for (var i = robot_path.length - sample_cells.length; i >= 0; --i)
-	{
-		var is_entry = true;
-		for (var j = 0; j < sample_cells.length; ++j)
-		{
-			if (robot_path[i + j].x != sample_cells[j].x
-				|| robot_path[i + j].y != sample_cells[j].y)
-			{
-				is_entry = false;
-				break;
-			}
-		}
-		
-		if (is_entry)
-		{
-			return robot_path.length - i;
-		}
-	}
-	
-	return robot_path.length;
-}
-
-// Determines robot's next movement direction basing on the current position
-var determine_direction = function(robot_path, position)
-{
-	var origin = { x : 0, y : 0, angle : 0};	// Relative origin
-	// We should get next accesible cell (not the wall)
-	var left_cell = get_left_cell_coordinate(origin, get_left_cell_coordinate(origin, position));
-	var right_cell = get_right_cell_coordinate(origin, get_right_cell_coordinate(origin, position));
-	var forward_cell = get_forward_cell_coordinate(origin, get_forward_cell_coordinate(origin, position));
-
-	// Trying to avoid looping
-	var left_cycle_distance = !is_left_occupied() ? get_nearest_cycle_distance(robot_path, [position, left_cell]) : 0;
-	var right_cycle_distance = !is_right_occupied() ? get_nearest_cycle_distance(robot_path, [position, right_cell]) : 0;
-	var forward_cycle_distance = !is_straight_occupied() ? get_nearest_cycle_distance(robot_path, [position, forward_cell]) : 0;
-	
-	// Looking for cycle which was visited the longest time ago
-	var max_distance = Math.max(left_cycle_distance, right_cycle_distance, forward_cycle_distance);
-	
-	if (max_distance == 0)	// Walls everywhere
-	{
-		return Direction.BACKWARD;
-	}
-	else if (left_cycle_distance == max_distance)
-	{
-		return Direction.LEFT
-	}
-	else if (forward_cycle_distance == max_distance)
-	{
-		return Direction.FORWARD;
-	}
-	else
-	{
-		return Direction.RIGHT
-	}
-}
-
-// Determines robot's next movement and executes it
-var make_move = function(robot_path, position)
-{
-	var handle_forward_movement = function()
-	{
-		move_forward(position.angle);
-		position = reflect_forward_movement(position)
-		robot_path.push(position);
-	}
-	
-	var handle_rotation = function(angle)
-	{
-		make_turn_in_place(angle, position.angle);
-		position.angle = recalculate_angle(position.angle + angle);
-	}
-	
-	var move_direction = determine_direction(robot_path, position);
-	
-	if (move_direction == Direction.BACKWARD)
-	{
-		handle_rotation(180);
-	}
-	else if (move_direction == Direction.LEFT)
-	{			
-		handle_rotation(-90);
-		handle_forward_movement();
-	}
-	else if (move_direction == Direction.FORWARD)
-	{
-		handle_forward_movement();
-	}
-	else if (move_direction == Direction.RIGHT)
-	{
-		handle_rotation(90);
-		handle_forward_movement();
-	}
-	
-	return position;
-}
+}
+
+// Returns the position of the first occurrence
+// sample_cells in robot_path from the end of the array
+var get_nearest_cycle_distance = function(robot_path, sample_cells)
+{
+	for (var i = robot_path.length - sample_cells.length; i >= 0; --i)
+	{
+		var is_entry = true;
+		for (var j = 0; j < sample_cells.length; ++j)
+		{
+			if (robot_path[i + j].x != sample_cells[j].x
+				|| robot_path[i + j].y != sample_cells[j].y)
+			{
+				is_entry = false;
+				break;
+			}
+		}
+		
+		if (is_entry)
+		{
+			return robot_path.length - i;
+		}
+	}
+	
+	return robot_path.length;
+}
+
+// Determines robot's next movement direction basing on the current position
+var determine_direction = function(robot_path, position)
+{
+	var origin = { x : 0, y : 0, angle : 0};	// Relative origin
+	// We should get next accesible cell (not the wall)
+	var left_cell = get_left_cell_coordinate(origin, get_left_cell_coordinate(origin, position));
+	var right_cell = get_right_cell_coordinate(origin, get_right_cell_coordinate(origin, position));
+	var forward_cell = get_forward_cell_coordinate(origin, get_forward_cell_coordinate(origin, position));
+
+	// Trying to avoid looping
+	var left_cycle_distance = !is_left_occupied() ? get_nearest_cycle_distance(robot_path, [position, left_cell]) : 0;
+	var right_cycle_distance = !is_right_occupied() ? get_nearest_cycle_distance(robot_path, [position, right_cell]) : 0;
+	var forward_cycle_distance = !is_straight_occupied() ? get_nearest_cycle_distance(robot_path, [position, forward_cell]) : 0;
+	
+	// Looking for cycle which was visited the longest time ago
+	var max_distance = Math.max(left_cycle_distance, right_cycle_distance, forward_cycle_distance);
+	
+	if (max_distance == 0)	// Walls everywhere
+	{
+		return Direction.BACKWARD;
+	}
+	else if (left_cycle_distance == max_distance)
+	{
+		return Direction.LEFT
+	}
+	else if (forward_cycle_distance == max_distance)
+	{
+		return Direction.FORWARD;
+	}
+	else
+	{
+		return Direction.RIGHT
+	}
+}
+
+// Determines robot's next movement and executes it
+var make_move = function(robot_path, position)
+{
+	var handle_forward_movement = function()
+	{
+		move_forward(position.angle);
+		position = reflect_forward_movement(position)
+		robot_path.push(position);
+	}
+	
+	var handle_rotation = function(angle)
+	{
+		make_turn_in_place(angle, position.angle);
+		position.angle = recalculate_angle(position.angle + angle);
+	}
+	
+	var move_direction = determine_direction(robot_path, position);
+	
+	if (move_direction == Direction.BACKWARD)
+	{
+		handle_rotation(180);
+	}
+	else if (move_direction == Direction.LEFT)
+	{			
+		handle_rotation(-90);
+		handle_forward_movement();
+	}
+	else if (move_direction == Direction.FORWARD)
+	{
+		handle_forward_movement();
+	}
+	else if (move_direction == Direction.RIGHT)
+	{
+		handle_rotation(90);
+		handle_forward_movement();
+	}
+	
+	return position;
+}
 
 // Goes through the labyrinth using left-hand rule
 var solve_the_labyrinth = function()
@@ -528,36 +528,41 @@ var solve_the_labyrinth = function()
 			x : 0,
 			y : 0,
 			angle : 0
-		};
-		
-	// Inititializing robot path
-	var robot_path = [];
-	robot_path.push(relative_position);
-		
+		};
+		
+	// Inititializing robot path
+	var robot_path = [];
+	robot_path.push(relative_position);
+		
 	// Main loop
 	while (hypotheses.length != 1)
 	{
-		print("Remaining hypotheses count: " +  hypotheses.length);
+		print("Remaining hypotheses count: " +  hypotheses.length);
 		
 		relative_position = make_move(robot_path, relative_position);
 		hypotheses = filter_hypotheses(full_map, hypotheses, relative_position);
 	}
-	
+	
 	// Getting start cell coordinates
 	var confirmed_hypothesis = hypotheses.pop();
-	var absolute_coordinates = get_current_cell_coordinate(confirmed_hypothesis, { x : 0, y : 0, angle : 0 });
-	
-	var start_cell_x = Math.floor(absolute_coordinates.x / 2 + 1);
-	var start_cell_y = Math.floor(absolute_coordinates.y / 2 + 1);
-	print('Result: x = ' +  start_cell_x + ' y = ' + start_cell_y);
+	var absolute_coordinates = get_current_cell_coordinate(confirmed_hypothesis, { x : 0, y : 0, angle : 0 });
+	var relative_coordinates = get_current_cell_coordinate(confirmed_hypothesis, relative_position)
 	
-	brick.display().addLabel('(' + start_cell_x + ',' + start_cell_y + ')', 1, 1);
+	
+	var current_cell_x = Math.floor(relative_coordinates.x / 2 + 1)
+	var current_cell_y = Math.floor(relative_coordinates.y / 2 + 1)
+	
+	result_string = '(' + (current_cell_x - 1) + ',' + (current_cell_y - 1) + ')' 
+	print('Result: ' + result_string);
+	
+	brick.display().addLabel(result_string, 0, 0);
 	brick.display().redraw();
+	script.wait(1000)
 }
-
 
-/***** Main code *****/
-
+
+/***** Main code *****/
+
 
 // Initializes algorithm
 var init_robot = function()
@@ -566,10 +571,10 @@ var init_robot = function()
 	script.wait(2500);
 	
 	var left_distance = brick.sensor(left_IR_sensor).read();
-	var right_distance = brick.sensor(right_IR_sensor).read();
-	var forward_distance = brick.sensor(forward_sonic_sensor).read();
+	var right_distance = brick.sensor(right_IR_sensor).read();
+	var forward_distance = brick.sensor(forward_sonic_sensor).read();
 	
-	side_half_corridor_width = Math.min(left_distance, right_distance, side_half_corridor_width);
+	side_half_corridor_width = Math.min(left_distance, right_distance, side_half_corridor_width);
 	forward_half_corridor_width = Math.min(forward_distance, forward_half_corridor_width);
 }
 
