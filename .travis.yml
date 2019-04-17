@@ -15,7 +15,7 @@ before_script:
   - volume_path=$(sudo docker volume inspect $VOLUME_NAME --format '{{.Mountpoint}}')
   
   - echo "Downloading checker rig..."
-  - sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/trunk/TestScripts $volume_path/TestScripts
+  - sudo svn checkout https://github.com/ibalashov24/semester_4_coursework/branches/travis-integration/TestScripts $volume_path/TestScripts
   - sudo cp -a "$volume_path/TestScripts/." "$volume_path"
   
   - echo "Preparing user solution file..."
