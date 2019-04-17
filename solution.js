@@ -550,9 +550,9 @@ var solve_the_labyrinth = function()
 	var start_cell_x = Math.floor(absolute_coordinates.x / 2 + 1);
 	var start_cell_y = Math.floor(absolute_coordinates.y / 2 + 1);
 	print('Result: x = ' +  start_cell_x + ' y = ' + start_cell_y);
-	/*brick.display().addLabel(start_cell_x + ' ' + start_cell_y, 1, 1);
+	
+	brick.display().addLabel('(' + start_cell_x + ',' + start_cell_y + ')', 1, 1);
 	brick.display().redraw();
-	script.wait(1000);*/
 }
 
 
