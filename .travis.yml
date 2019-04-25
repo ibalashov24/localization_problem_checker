@@ -6,33 +6,38 @@ services:
   - docker
   
 env:
-  - VOLUME_NAME="trik-checker-sandbox"  CONTAINER_NAME="trik-checker"
+  - VOLUME_NAME="trik-checker-sandbox"  CONTAINER_NAME="trik-checker" IMAGE_NAME="ibalashov24/checker:latest"
   
 before_script:
   - echo "Downloading and setting up a docker image..."
-  - sudo docker build -t checker https://github.com/ibalashov24/epicbox-images.git#travis-checker:/epicbox-trik -f Dockerfile.xenial
+  - docker pull $IMAGE_NAME
   - sudo docker volume create $VOLUME_NAME
   - volume_path=$(sudo docker volume inspect $VOLUME_NAME --format '{{.Mountpoint}}')
-  
+
+  - echo "Downloading checker rig..."
+  - git clone -b docker-image https://github.com/ibalashov24/semester_4_coursework.git "$volume_path"
+
   - echo "Preparing user solution file..."
   - sudo cp ./solution.js $volume_path/solution.js  
   
   - > 
-    if  [ -d ./test_fields ] && ! [ `ls ./test_fields | wc -l` -eq 0 ] ; then 
+    if  [ -d ./test_fields ] && ! [ "$(find ./test_fields -not -path '*/\.*' -type f  | wc -l)" -eq 0 ] ; then
       echo "Preparing user fields..."
-      sudo cp -r ./test_fields/. $volume_path/custom_fields
+      cp -r ./test_fields/. "$volume_path"/custom_fields
     else
       echo "Fields not found in ./test_fields !!!"
       exit 1
     fi
-  
+
 script:
   - echo "Launching Docker container"
-  - sudo docker images
   - >
-    sudo docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts checker
+    sudo docker run -i --name $CONTAINER_NAME -v $VOLUME_NAME:/trikStudio-checker/launch_scripts $IMAGE_NAME
     bash /trikStudio-checker/start_testing.sh
-    
+
+  - echo "Interpresting results..."
+  - python3 ./solution_tester.py
+
 after_success:
   - echo "TEST SUCCESS"
  
